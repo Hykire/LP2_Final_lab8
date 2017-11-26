@@ -23,7 +23,7 @@ namespace Lab8 {
             platoFondoDA = new PlatoFondoDA();
         }
         [WebMethod]
-        public BindingList<PlatoFondo> listarEntradas() {
+        public BindingList<PlatoFondo> listarPlatoFondo() {
             BindingList<PlatoFondo> lista = new BindingList<PlatoFondo>();
             lista = platoFondoDA.listarPlatoFondo();
             return lista;

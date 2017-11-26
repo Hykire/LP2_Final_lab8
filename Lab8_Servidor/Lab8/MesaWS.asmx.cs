@@ -23,7 +23,7 @@ namespace Lab8 {
             mesaDA = new MesaDA();
         }
         [WebMethod]
-        public BindingList<Mesa> listarEntradas() {
+        public BindingList<Mesa> listarMesas() {
             BindingList<Mesa> lista = new BindingList<Mesa>();
             lista = mesaDA.listarMesas();
             return lista;
