@@ -6,5 +6,16 @@ using System.Threading.Tasks;
 
 namespace Modelo {
     public class Orden_Menu_Detalle {
+        private int id;
+        private Entrada entrada;
+        private PlatoFondo platoFondo;
+
+        public Orden_Menu_Detalle() {
+            entrada = new Entrada();
+            platoFondo = new PlatoFondo();
+        }
+        public int Id { get => id; set => id = value; }
+        public Entrada Entrada { get => entrada; set => entrada = value; }
+        public PlatoFondo PlatoFondo { get => platoFondo; set => platoFondo = value; }
     }
 }
