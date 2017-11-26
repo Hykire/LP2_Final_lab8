@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AccesoDatos;
+using Modelo;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -15,9 +18,15 @@ namespace Lab8 {
     // [System.Web.Script.Services.ScriptService]
     public class Plato_FondoWS : System.Web.Services.WebService {
 
+        private PlatoFondoDA platoFondoDA;
+        public Plato_FondoWS() {
+            platoFondoDA = new PlatoFondoDA();
+        }
         [WebMethod]
-        public string HelloWorld() {
-            return "Hello World";
+        public BindingList<PlatoFondo> listarEntradas() {
+            BindingList<PlatoFondo> lista = new BindingList<PlatoFondo>();
+            lista = platoFondoDA.listarPlatoFondo();
+            return lista;
         }
     }
 }
