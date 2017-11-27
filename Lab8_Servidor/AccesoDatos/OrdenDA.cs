@@ -49,5 +49,19 @@ namespace AccesoDatos {
             conn.Close();
             return lista;
         }
+        public bool registrarOrden(Orden o) {
+            String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";
+            MySqlConnection conn = new MySqlConnection(cadena);
+            conn.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.CommandText = "INSERT INTO ORDEN(ID_ORDEN,FID_NUMERO_MESA,FECHA_HORA_ORDEN,PRECIO_TOTAL) VALUES ('NULL','" + o.Mesa.Id + "','" + o.Hora_orden + "','" + o.PreioTotal + "')";
+            comando.Connection = conn;
+            comando.ExecuteNonQuery();
+            OrdenMenuDetalleDA detalleDA = new OrdenMenuDetalleDA();
+            for(int i = 0; i < o.DetalleOrden.Count(); i++) {
+                detalleDA.registrarDetallePedido(o.DetalleOrden.ElementAt(i));
+            }
+            return true;
+        }
     }
 }

@@ -54,7 +54,7 @@ namespace AccesoDatos {
             MySqlConnection conn = new MySqlConnection(cadena);
             conn.Open();
             MySqlCommand comando = new MySqlCommand();
-            comando.CommandText = "INSERT INTO ORDEN_MENU_DETALLE VALUES ('NULL','" + detalle.IdOrden + "','" + detalle.Entrada.Id + "','" + detalle.PlatoFondo.Id + "')";
+            comando.CommandText = "INSERT INTO ORDEN_MENU_DETALLE(ID_ORDEN_MENU_DETALLE,FID_ORDEN,FID_ENTRADA,FID_PLATO_FONDO) VALUES ('NULL','" + detalle.IdOrden + "','" + detalle.Entrada.Id + "','" + detalle.PlatoFondo.Id + "')";
             comando.Connection = conn;
             comando.ExecuteNonQuery();
             return true;

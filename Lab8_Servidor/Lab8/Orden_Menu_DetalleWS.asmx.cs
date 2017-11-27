@@ -27,6 +27,11 @@ namespace Lab8 {
             BindingList<Orden_Menu_Detalle> lista = new BindingList<Orden_Menu_Detalle>();
             lista = detalleDA.listarDetalleDeOrden();
             return lista;
+        
+        }
+        [WebMethod]
+        public bool registrarDetalleDeOrden(Orden_Menu_Detalle o) {
+            return detalleDA.registrarDetallePedido(o);
         }
     }
 }

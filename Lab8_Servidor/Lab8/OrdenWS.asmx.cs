@@ -28,5 +28,9 @@ namespace Lab8 {
             lista = ordenDA.listarOrdenes();
             return lista;
         }
+        [WebMethod]
+        public bool registrarOrden(Orden o) {
+            return ordenDA.registrarOrden(o);
+        }
     }
 }
