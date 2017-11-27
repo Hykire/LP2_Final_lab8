@@ -22,7 +22,9 @@ namespace AccesoDatos {
             BindingList<Mesa> lstMesas = new BindingList<Mesa>();
             lstMesas = mesaDA.listarMesas();
 
-            
+            OrdenMenuDetalleDA detalleDA = new OrdenMenuDetalleDA();
+            BindingList<Orden_Menu_Detalle> lstDetalle = new BindingList<Orden_Menu_Detalle>();
+            lstDetalle = detalleDA.listarDetalleDeOrden();
 
             MySqlDataReader reader = comando.ExecuteReader();
             while (reader.Read()) {
@@ -33,6 +35,11 @@ namespace AccesoDatos {
                     if (lstMesas.ElementAt(i).Id == o.Id) {
                         o.Mesa = lstMesas.ElementAt(i);
                         break;
+                    }
+                }
+                for (int i = 0; i < lstDetalle.Count(); i++) {
+                    if (lstDetalle.ElementAt(i).IdOrden == o.Id) {
+                        o.DetalleOrden.Add(lstDetalle.ElementAt(i));
                     }
                 }
                 o.Hora_orden = reader.GetDateTime(2);

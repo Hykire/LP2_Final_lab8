@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AccesoDatos;
+using Modelo;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -15,9 +18,15 @@ namespace Lab8 {
     // [System.Web.Script.Services.ScriptService]
     public class OrdenWS : System.Web.Services.WebService {
 
+        private OrdenDA ordenDA;
+        public OrdenWS() {
+            ordenDA = new OrdenDA();
+        }
         [WebMethod]
-        public string HelloWorld() {
-            return "Hello World";
+        public BindingList<Orden> listarDetallePedidos() {
+            BindingList<Orden> lista = new BindingList<Orden>();
+            lista = ordenDA.listarOrdenes();
+            return lista;
         }
     }
 }

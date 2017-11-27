@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Modelo {
     public class Orden_Menu_Detalle {
         private int id;
+        private int idOrden;
         private Entrada entrada;
         private PlatoFondo platoFondo;
 
@@ -17,5 +18,6 @@ namespace Modelo {
         public int Id { get => id; set => id = value; }
         public Entrada Entrada { get => entrada; set => entrada = value; }
         public PlatoFondo PlatoFondo { get => platoFondo; set => platoFondo = value; }
+        public int IdOrden { get => idOrden; set => idOrden = value; }
     }
 }

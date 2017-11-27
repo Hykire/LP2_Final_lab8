@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="EntradaDA.cs" />
     <Compile Include="MesaDA.cs" />
+    <Compile Include="OrdenDA.cs" />
+    <Compile Include="OrdenMenuDetalleDA.cs" />
     <Compile Include="PlatoFondoDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
