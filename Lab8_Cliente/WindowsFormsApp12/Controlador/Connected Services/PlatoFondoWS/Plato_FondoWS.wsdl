@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="listarPlatoFondo">
+        <s:complexType />
+      </s:element>
+      <s:element name="listarPlatoFondoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarPlatoFondoResult" type="tns:ArrayOfPlatoFondo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlatoFondo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlatoFondo" nillable="true" type="tns:PlatoFondo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlatoFondo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="listarPlatoFondoSoapIn">
+    <wsdl:part name="parameters" element="tns:listarPlatoFondo" />
+  </wsdl:message>
+  <wsdl:message name="listarPlatoFondoSoapOut">
+    <wsdl:part name="parameters" element="tns:listarPlatoFondoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Plato_FondoWSSoap">
+    <wsdl:operation name="listarPlatoFondo">
+      <wsdl:input message="tns:listarPlatoFondoSoapIn" />
+      <wsdl:output message="tns:listarPlatoFondoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Plato_FondoWSSoap" type="tns:Plato_FondoWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarPlatoFondo">
+      <soap:operation soapAction="http://tempuri.org/listarPlatoFondo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Plato_FondoWSSoap12" type="tns:Plato_FondoWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarPlatoFondo">
+      <soap12:operation soapAction="http://tempuri.org/listarPlatoFondo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Plato_FondoWS">
+    <wsdl:port name="Plato_FondoWSSoap" binding="tns:Plato_FondoWSSoap">
+      <soap:address location="http://localhost:50319/Plato_FondoWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Plato_FondoWSSoap12" binding="tns:Plato_FondoWSSoap12">
+      <soap12:address location="http://localhost:50319/Plato_FondoWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

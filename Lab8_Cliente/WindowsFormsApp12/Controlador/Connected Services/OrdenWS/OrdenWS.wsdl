@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="listarDetallePedidos">
+        <s:complexType />
+      </s:element>
+      <s:element name="listarDetallePedidosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarDetallePedidosResult" type="tns:ArrayOfOrden" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrden">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Orden" nillable="true" type="tns:Orden" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Orden">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mesa" type="tns:Mesa" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hora_orden" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreioTotal" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="DetalleOrden" type="tns:ArrayOfOrden_Menu_Detalle" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mesa">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Capacidad" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrden_Menu_Detalle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Orden_Menu_Detalle" nillable="true" type="tns:Orden_Menu_Detalle" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Orden_Menu_Detalle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Entrada" type="tns:Entrada" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlatoFondo" type="tns:PlatoFondo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrden" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Texto" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Entrada">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlatoFondo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="registrarOrden">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="o" type="tns:Orden" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarOrdenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="registrarOrdenResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="listarDetallePedidosSoapIn">
+    <wsdl:part name="parameters" element="tns:listarDetallePedidos" />
+  </wsdl:message>
+  <wsdl:message name="listarDetallePedidosSoapOut">
+    <wsdl:part name="parameters" element="tns:listarDetallePedidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="registrarOrdenSoapIn">
+    <wsdl:part name="parameters" element="tns:registrarOrden" />
+  </wsdl:message>
+  <wsdl:message name="registrarOrdenSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarOrdenResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OrdenWSSoap">
+    <wsdl:operation name="listarDetallePedidos">
+      <wsdl:input message="tns:listarDetallePedidosSoapIn" />
+      <wsdl:output message="tns:listarDetallePedidosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registrarOrden">
+      <wsdl:input message="tns:registrarOrdenSoapIn" />
+      <wsdl:output message="tns:registrarOrdenSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrdenWSSoap" type="tns:OrdenWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarDetallePedidos">
+      <soap:operation soapAction="http://tempuri.org/listarDetallePedidos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarOrden">
+      <soap:operation soapAction="http://tempuri.org/registrarOrden" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OrdenWSSoap12" type="tns:OrdenWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listarDetallePedidos">
+      <soap12:operation soapAction="http://tempuri.org/listarDetallePedidos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarOrden">
+      <soap12:operation soapAction="http://tempuri.org/registrarOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrdenWS">
+    <wsdl:port name="OrdenWSSoap" binding="tns:OrdenWSSoap">
+      <soap:address location="http://localhost:50319/OrdenWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OrdenWSSoap12" binding="tns:OrdenWSSoap12">
+      <soap12:address location="http://localhost:50319/OrdenWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

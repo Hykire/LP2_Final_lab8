@@ -8,7 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AccesoDatos {
+
     public class EntradaDA {
+        public EntradaDA() {
+
+        }
         public BindingList<Entrada> listarEntradas() {
             BindingList<Entrada> lista = new BindingList<Entrada>();
             String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";

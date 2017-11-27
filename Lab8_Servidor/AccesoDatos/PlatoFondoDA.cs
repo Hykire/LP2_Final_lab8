@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos {
     public class PlatoFondoDA {
+        public PlatoFondoDA() {
+
+        }
         public BindingList<PlatoFondo> listarPlatoFondo() {
             BindingList<PlatoFondo> lista = new BindingList<PlatoFondo>();
             String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";

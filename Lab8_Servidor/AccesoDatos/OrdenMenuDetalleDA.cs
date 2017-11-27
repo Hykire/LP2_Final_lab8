@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos {
     public class OrdenMenuDetalleDA {
+        public OrdenMenuDetalleDA() {
+
+        }
         public BindingList<Orden_Menu_Detalle> listarDetalleDeOrden() {
             BindingList<Orden_Menu_Detalle> lista = new BindingList<Orden_Menu_Detalle>();
             String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";

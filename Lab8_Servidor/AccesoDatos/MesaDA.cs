@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos {
     public class MesaDA {
+        public MesaDA() {
+
+        }
         public BindingList<Mesa> listarMesas() {
             BindingList<Mesa> lista = new BindingList<Mesa>();
             String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";
