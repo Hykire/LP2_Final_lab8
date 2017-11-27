@@ -19,7 +19,7 @@ namespace Modelo {
         public Entrada Entrada { get => entrada; set => entrada = value; }
         public PlatoFondo PlatoFondo { get => platoFondo; set => platoFondo = value; }
         public int IdOrden { get => idOrden; set => idOrden = value; }
-        public string Texto { get => ToString(); set => texto = value; }
+        public string Texto { get => "Entrada: " + entrada.Nombre + " \n Plato Fondo: " + platoFondo.Nombre + " \n Precio: " + platoFondo.Precio + ""; set => texto = value; }
 
         public override string ToString() {
             return "Entrada: " + entrada.Nombre + " \n Plato Fondo: " + platoFondo.Nombre + " \n Precio: " + platoFondo.Precio + "";

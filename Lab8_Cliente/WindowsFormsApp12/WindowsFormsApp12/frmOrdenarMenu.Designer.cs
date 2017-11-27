@@ -44,6 +44,7 @@
             this.txtPrecioTotal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.MENUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ez = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenesMenu)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,8 @@
             this.dgvOrdenesMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOrdenesMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenesMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MENUS});
+            this.MENUS,
+            this.ez});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,6 +192,12 @@
             this.MENUS.ReadOnly = true;
             this.MENUS.Width = 350;
             // 
+            // ez
+            // 
+            this.ez.HeaderText = "ez";
+            this.ez.Name = "ez";
+            this.ez.ReadOnly = true;
+            // 
             // frmOrdenarMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,6 +239,7 @@
         private System.Windows.Forms.TextBox txtPrecioTotal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MENUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ez;
     }
 }
 

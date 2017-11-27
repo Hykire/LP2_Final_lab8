@@ -18,7 +18,7 @@ namespace WindowsFormsApp12
         private Controlador.EntradaWS.Entrada entradaSeleccionada;
         private Controlador.PlatoFondoWS.PlatoFondo platoFondoSeleccionado;
         private BindingList<Orden_Menu_Detalle> lstDetalleOrden;
-        private Orden_Menu_Detalle detalle;
+        
         public frmOrdenarMenu()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace WindowsFormsApp12
             platoFondoSeleccionado = new Controlador.PlatoFondoWS.PlatoFondo();
             lstDetalleOrden = new BindingList<Orden_Menu_Detalle>();
             dgvOrdenesMenu.DataSource = lstDetalleOrden;
-            detalle = new Orden_Menu_Detalle();
+            
             dgvOrdenesMenu.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Texto", HeaderText = "Custom ToString value" });
             
         }
@@ -38,15 +38,19 @@ namespace WindowsFormsApp12
             if (frmSeleccionMenu.ShowDialog() == DialogResult.OK) {
                 entradaSeleccionada = frmSeleccionMenu.EntradaSeleccionada;
                 platoFondoSeleccionado = frmSeleccionMenu.PlatoFondoSeleccionado;
-                
+                MessageBox.Show(platoFondoSeleccionado.Nombre, "Mensaje de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Orden_Menu_Detalle detalle = new Orden_Menu_Detalle();
+                detalle.PlatoFondo = new Controlador.DetalleOrdenWS.PlatoFondo();
+                detalle.Entrada = new Controlador.DetalleOrdenWS.Entrada();
+                if (detalle == null)
+                    MessageBox.Show("Error!!", "Mensaje de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(platoFondoSeleccionado == null)
+                    MessageBox.Show("Plato nulo!", "Mensaje de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 detalle.PlatoFondo.Id = platoFondoSeleccionado.Id;
                 detalle.PlatoFondo.Nombre = platoFondoSeleccionado.Nombre;
                 detalle.PlatoFondo.Precio = platoFondoSeleccionado.Precio;
                 detalle.Entrada.Id = entradaSeleccionada.Id;
                 detalle.Entrada.Nombre = entradaSeleccionada.Nombre;
-                detalle.Texto = "Holi";
-                MessageBox.Show(detalle.Texto, "Mensaje de aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                System.Console.Out.WriteLine(detalle);
                 lstDetalleOrden.Add(detalle);
                 dgvOrdenesMenu.DataSource = lstDetalleOrden;
 
