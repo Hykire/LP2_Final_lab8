@@ -22,13 +22,13 @@ namespace WindowsFormsApp12
         public frmOrdenarMenu()
         {
             InitializeComponent();
-            //dgvOrdenesMenu.AutoGenerateColumns = false;
+            dgvOrdenesMenu.AutoGenerateColumns = false;
             entradaSeleccionada = new Controlador.EntradaWS.Entrada();
             platoFondoSeleccionado = new Controlador.PlatoFondoWS.PlatoFondo();
             lstDetalleOrden = new BindingList<Orden_Menu_Detalle>();
             dgvOrdenesMenu.DataSource = lstDetalleOrden;
             
-            dgvOrdenesMenu.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Texto", HeaderText = "Custom ToString value" });
+            //dgvOrdenesMenu.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Texto", HeaderText = "Custom ToString value" });
             
         }
 
@@ -51,10 +51,11 @@ namespace WindowsFormsApp12
                 detalle.PlatoFondo.Precio = platoFondoSeleccionado.Precio;
                 detalle.Entrada.Id = entradaSeleccionada.Id;
                 detalle.Entrada.Nombre = entradaSeleccionada.Nombre;
+                detalle.Texto = "Entrada: " + detalle.Entrada.Nombre + "\nPlato Fondo: " + detalle.PlatoFondo.Nombre + "\nPrecio: " + detalle.PlatoFondo.Precio; 
                 lstDetalleOrden.Add(detalle);
-                dgvOrdenesMenu.DataSource = lstDetalleOrden;
+                //dgvOrdenesMenu.DataSource = lstDetalleOrden;
 
-                dgvOrdenesMenu.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Texto", HeaderText = "Custom ToString value" });
+                //dgvOrdenesMenu.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Texto", HeaderText = "Custom ToString value" });
             }
         }
 
