@@ -17,6 +17,7 @@ namespace AccesoDatos {
             MySqlCommand comando = new MySqlCommand();
             comando.CommandText = "SELECT * FROM ORDEN_MENU_DETALLE";
             comando.Connection = conn;
+            
             MySqlDataReader reader = comando.ExecuteReader();
 
             EntradaDA entradaDA = new EntradaDA();
@@ -47,6 +48,16 @@ namespace AccesoDatos {
             }
             conn.Close();
             return lista;
+        }
+        public bool registrarDetallePedido(Orden_Menu_Detalle detalle) {
+            String cadena = "server=50.62.209.188;" + "user=fpaz; password=123456; database=LP2;" + "port=3306";
+            MySqlConnection conn = new MySqlConnection(cadena);
+            conn.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.CommandText = "INSERT INTO ORDEN_MENU_DETALLE VALUES ('NULL','" + detalle.IdOrden + "','" + detalle.Entrada.Id + "','" + detalle.PlatoFondo.Id + "')";
+            comando.Connection = conn;
+            comando.ExecuteNonQuery();
+            return true;
         }
     }
 }
